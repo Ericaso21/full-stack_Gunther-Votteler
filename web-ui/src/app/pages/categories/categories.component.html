@@ -1,0 +1,87 @@
+<div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Categoria</h4>
+        <button type="button" id="closeModal" class="close" aria-label="Close"
+            (click)="submitted = false; d('Cross click');close(); edit = false">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form autocomplete="off">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="category_name">Nombre categoria</label>
+                    <input type="text" name="category_name" class="form-control" placeholder="Nombre categoria"
+                        [(ngModel)]="category.category_name">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark"
+            (click)="submitted = false; c('Save click'); close(); edit = false">
+            Cerrar
+        </button>
+        <button class="btn btn-success" (click)="edit ? updateCategory() : saveCategory()">
+            Guardar
+        </button>
+    </div>
+</ng-template>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0 text-white d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Categorias</h3>
+                    <button class="btn btn-success btn-sm" (click)="open(content)">
+                        <i class="ni ni-fat-add">Crear categoria</i>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                            class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let category of categories; let indice = index">
+                                    <td>{{ indice + 1 }}</td>
+                                    <td>{{ category.category_name }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm text-center">
+                                            <button class="btn btn-primary btn-sm" title="Editar"
+                                                (click)="getCategory(category.category_id ); open(content)">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" title="Eliminar"
+                                                (click)="deleteCategory(category.category_id)">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

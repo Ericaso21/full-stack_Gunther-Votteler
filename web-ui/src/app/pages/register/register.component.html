@@ -1,0 +1,58 @@
+<div class="header bg-gradient-blue py-7 py-lg-8">
+    <div class="container">
+        <div class="header-body text-center mb-7">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-6">
+                    <h1 class="text-default">Bienvenido!</h1>
+                    <p class="text-lead text-default">Este sitio está protegido por reCAPTCHA y aplica las <a
+                            href="https://policies.google.com/privacy?xd_co_f=OTc5Yzc0NjktYjU3OS00YzhlLWFhMTgtNGViNTEyYjgzN2Nl"
+                            class="link-primary">politicas de privacidad</a> y los terminos <a
+                            href="https://policies.google.com/terms" class="link-primary">términos de servicio de
+                            Google</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+    <!-- Table -->
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card bg-secondary shadow border-0">
+                <div class="card-body px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                        <small>Registrar</small>
+                    </div>
+                    <form autocomplete="off">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Nombres</label>
+                                <input type="text" name="first_name" placeholder="Nombres" class="form-control"
+                                    [(ngModel)]="user.first_name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Apellidos</label>
+                                <input type="text" name="surname" placeholder="Apellidos" class="form-control"
+                                    [(ngModel)]="user.surname">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Email</label>
+                                <input class="form-control" type="email" name="email" placeholder="Correo electronico"
+                                    [(ngModel)]="user.email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Contraseña</label>
+                                <input class="form-control" type="password" name="password_user"
+                                    [(ngModel)]="user.password_user" placeholder="Contraseña" autocomplete="off">
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block" (click)="saveUser()">Resgistrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

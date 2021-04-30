@@ -1,0 +1,37 @@
+<div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
+            <div class="row">
+                <select name="" class="form-control" [(ngModel)]="selectedSkill" (change)="getSelectedSkill()">
+                    <option value="0">Seleccione</option>
+                    <option *ngFor="let list_category of list_categories" [value]="list_category.category_id">
+                        {{list_category.category_name}}</option>
+                </select>
+
+            </div>
+            <div class="row">
+                <div class="movie_card" id="bright" *ngFor="let movie of films">
+                    <div class="info_section">
+                        <div class="movie_header">
+                            <img class="locandina" [src]="movie.movie_image" />
+                            <h1>{{movie.movie_title}}</h1>
+                            <h4>{{movie.movie_premiere_date}}, trailer {{movie.movie_trailer}}</h4>
+                            <span class="minutes">{{movie.movie_duration}}</span>
+                            <p class="type" *ngFor="let category of categories">
+                                <ng-template [ngIf]="category.pk_fk_movie_id == movie.movie_id">
+                                    {{category.category_name}}
+                                </ng-template>
+                            </p>
+                        </div>
+                        <div class="movie_desc">
+                            <p class="text">
+                                {{movie.movie_description}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
